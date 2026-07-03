@@ -8,6 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}></Route>
+          <Route path="/category/:name" element={<Cat} />
         </Routes>
       </BrowserRouter>
     </>
