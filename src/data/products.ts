@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: 1,
     name: "Tomato",
@@ -8,9 +8,9 @@ const products = [
 
   {
     id: 2,
-    name: "Milk",
+    name: "Potato",
     price: 30,
-    category: "dairy",
+    category: "vegetables",
   },
 
   {
@@ -22,10 +22,36 @@ const products = [
 
   {
     id: 4,
-    name: "Biscuits",
-    price: 20,
+    name: "Banana",
+    price: 60,
+    category: "fruits",
+  },
+
+  {
+    id: 5,
+    name: "Milk",
+    price: 35,
+    category: "dairy",
+  },
+
+  {
+    id: 6,
+    name: "Curd",
+    price: 45,
+    category: "dairy",
+  },
+
+  {
+    id: 7,
+    name: "Bread",
+    price: 50,
+    category: "bakery",
+  },
+
+  {
+    id: 8,
+    name: "Cookies",
+    price: 80,
     category: "snacks",
   },
 ];
-
-export default products;

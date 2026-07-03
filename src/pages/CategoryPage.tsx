@@ -1,9 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 function CategoryPage() {
+  const { name } = useParams();
   return (
     <>
-      <h1>Category Page</h1>
+      <h1>{name} Products</h1>
     </>
   );
 }
