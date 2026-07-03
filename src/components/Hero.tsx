@@ -5,8 +5,14 @@ function Hero() {
   return (
     <>
       <div className="hero">
-        <h1>Groceries delivered in 10 minutes</h1>
-        <p>Fresh vegetables, fruits and dairy delivered to your doorstep</p>
+        <h1>
+          Order Fresh Grocery <br />
+          Enjoy Healthy Life
+        </h1>
+        <p>
+          Fresh organic vegetables, fruits and dairy products delivered with
+          quality and care.
+        </p>
         <button>Shop Now</button>
       </div>
     </>
