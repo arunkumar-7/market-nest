@@ -1,20 +1,31 @@
 import { useForm } from "react-hook-form";
 import "./Register.css";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { RegisterRequest } from "../interface/RegisterRequest";
+import { register } from "../service/AuthService";
 
 function Register() {
   const {
-    register,
+    register: registerField,
     handleSubmit,
     reset,
     formState: { isSubmitting },
-  } = useForm();
+  } = useForm<RegisterRequest>();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    toast.success("Registered Successfully");
-    reset();
+  const onSubmit = async (data: RegisterRequest) => {
+    try {
+      const response = await register(data);
+
+      console.log(response.data);
+
+      toast.success(response.data.message);
+
+      reset();
+    } catch (error) {
+      console.error(error);
+      toast.error("Registration Failed");
+    }
   };
 
   return (
@@ -24,23 +35,28 @@ function Register() {
         <p>Register to continue shopping</p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" placeholder="Enter Name" {...register("name")} />
+          <input
+            type="text"
+            placeholder="Enter Name"
+            {...registerField("name")}
+          />
+
           <input
             type="email"
             placeholder="Enter Email"
-            {...register("email")}
+            {...registerField("email")}
           />
 
           <input
             type="password"
             placeholder="Enter Password"
-            {...register("password")}
+            {...registerField("password")}
           />
 
           <input
             type="tel"
             placeholder="Enter Phone Number"
-            {...register("phone")}
+            {...registerField("phone")}
           />
 
           <div className="gender-group">
@@ -48,17 +64,25 @@ function Register() {
 
             <div className="gender-options">
               <label>
-                <input type="radio" value="Male" {...register("gender")} />
+                <input type="radio" value="MALE" {...registerField("gender")} />
                 Male
               </label>
 
               <label>
-                <input type="radio" value="Female" {...register("gender")} />
+                <input
+                  type="radio"
+                  value="FEMALE"
+                  {...registerField("gender")}
+                />
                 Female
               </label>
 
               <label>
-                <input type="radio" value="Other" {...register("gender")} />
+                <input
+                  type="radio"
+                  value="OTHER"
+                  {...registerField("gender")}
+                />
                 Other
               </label>
             </div>
