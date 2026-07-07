@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/images/logo-marketnest.png";
 import "./Navbar.css";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <>
@@ -21,7 +22,9 @@ function Navbar() {
           />
         </div>
         <div className="nav-buttons">
-          <button>Login</button>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
           <button className="cart-btn">
             <FaShoppingCart /> Cart
           </button>
