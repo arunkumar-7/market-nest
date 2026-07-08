@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import type { RegisterRequest } from "../interface/RegisterRequest";
+import type { RegisterRequest } from "../interfaces/RegisterRequest";
 import { register } from "../service/AuthService";
 
 function Register() {

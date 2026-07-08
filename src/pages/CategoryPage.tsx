@@ -1,6 +1,5 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../data/products";
+import { products } from "../data/Products";
 import "./CategoryPage.css";
 
 function CategoryPage() {

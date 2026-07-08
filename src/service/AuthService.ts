@@ -1,5 +1,5 @@
-import type { LoginRequest } from "../interface/LoginRequest";
-import type { RegisterRequest } from "../interface/RegisterRequest";
+import type { LoginRequest } from "../interfaces/LoginRequest";
+import type { RegisterRequest } from "../interfaces/RegisterRequest";
 import { loginUser, registerUser } from "../api/AuthApi";
 
 export const register = async (data: RegisterRequest) => {
