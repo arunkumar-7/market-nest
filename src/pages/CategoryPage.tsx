@@ -5,7 +5,8 @@ import { useCart } from "../hooks/useCart";
 
 function CategoryPage() {
   const { name } = useParams();
-  const { addToCart } = useCart();
+
+  const { cart, addToCart, increaseQuantity, decreaseQuantity } = useCart();
 
   const filteredProducts = products.filter(
     (product) => product.category === name,
@@ -16,24 +17,48 @@ function CategoryPage() {
       <h1>{name} Products</h1>
 
       <div className="product-container">
-        {filteredProducts.map((product) => (
-          <div className="product-card" key={product.id}>
-            <img src={product.image} alt={product.name} />
+        {filteredProducts.map((product) => {
+          const cartItem = cart.find((item) => item.id === product.id);
 
-            <h3>{product.name}</h3>
+          return (
+            <div className="product-card" key={product.id}>
+              <img src={product.image} alt={product.name} />
 
-            <p>₹{product.price}</p>
+              <h3>{product.name}</h3>
 
-            <p>Stock: {product.stock}</p>
+              <p>₹{product.price}</p>
 
-            <button
-              onClick={() => addToCart(product)}
-              className="mt-3 w-full rounded-lg bg-green-600 py-2 text-white transition hover:bg-green-700"
-            >
-              Add to Cart
-            </button>
-          </div>
-        ))}
+              <p>Stock: {product.stock}</p>
+
+              {cartItem ? (
+                <div className="mt-3 flex items-center justify-between rounded-lg bg-green-600 px-3 py-2 text-white">
+                  <button
+                    onClick={() => decreaseQuantity(product.id)}
+                    className="text-xl font-bold"
+                  >
+                    -
+                  </button>
+
+                  <span className="font-semibold">{cartItem.quantity}</span>
+
+                  <button
+                    onClick={() => increaseQuantity(product.id)}
+                    className="text-xl font-bold"
+                  >
+                    +
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => addToCart(product)}
+                  className="mt-3 w-full rounded-lg bg-green-600 py-2 text-white transition hover:bg-green-700"
+                >
+                  Add to Cart
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

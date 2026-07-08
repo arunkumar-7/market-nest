@@ -1,7 +1,13 @@
 import logo from "../assets/images/logo-marketnest.png";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
+import { FaShoppingCart } from "react-icons/fa";
+
 function Navbar() {
+  const { cart } = useCart();
+
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   return (
     <>
       <nav className="navbar">
@@ -24,8 +30,12 @@ function Navbar() {
             <button>Login</button>
           </Link>
           <Link to="/cart">
-            <button className="rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700">
+            <button className="flex items-center gap-2 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700">
+              <FaShoppingCart />
               Cart
+              <span className="rounded-full bg-white px-2 text-green-700 font-bold">
+                {cartCount}
+              </span>
             </button>
           </Link>
         </div>
