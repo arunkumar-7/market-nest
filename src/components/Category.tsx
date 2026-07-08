@@ -1,4 +1,3 @@
-import React from "react";
 import { FaAppleAlt, FaLeaf } from "react-icons/fa";
 import { GiMilkCarton } from "react-icons/gi";
 import { LuCookie } from "react-icons/lu";

@@ -1,28 +1,33 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import Navbar from "./components/Navbar";
+
 import Home from "./pages/Home";
 import CategoryPage from "./pages/CategoryPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { ToastContainer } from "react-toastify";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:name" element={<CategoryPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-        />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:name" element={<CategoryPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
+    </BrowserRouter>
   );
 }
 
