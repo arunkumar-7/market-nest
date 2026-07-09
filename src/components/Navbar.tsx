@@ -1,4 +1,5 @@
 import logo from "../assets/images/logo-marketnest.png";
+import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
