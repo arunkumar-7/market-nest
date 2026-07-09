@@ -4,7 +4,7 @@ MarketNest is a modern quick-commerce web application built with React, TypeScri
 
 ## 🌐 Live Demo
 
-https://market-nest-lota.vercel.app
+https://market-nest-iota.vercel.app/
 
 ## ✨ Features
 
