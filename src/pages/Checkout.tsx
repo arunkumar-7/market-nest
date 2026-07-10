@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import QRCode from "react-qr-code";
 import {
   FaMoneyBillWave,
@@ -14,6 +14,7 @@ import { sendOrderEmail } from "../service/emailService";
 import { toast } from "react-toastify";
 import { useOrder } from "../hooks/useOrder";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Checkout() {
   const { cart, clearCart } = useCart();
@@ -75,16 +76,13 @@ function Checkout() {
     try {
       const order = {
         order_id: Math.floor(Math.random() * 100000),
-
         email,
-
         orders: cart.map((item) => ({
           name: item.name,
           units: item.quantity,
           price: item.price,
           image_url: item.image,
         })),
-
         cost: {
           shipping: delivery,
           tax: 0,
@@ -92,48 +90,48 @@ function Checkout() {
         },
       };
 
-      await sendOrderEmail(order);
-
       const orderData = {
         orderNumber: Math.floor(Math.random() * 100000),
-
         customerName,
-
         mobile,
-
         email,
-
         address,
-
         paymentMode,
-
         grandTotal: subtotal,
-
         discount,
-
         finalAmount,
-
         orderDate: new Date().toLocaleString(),
-
         status: "PLACED",
-
         items: [...cart],
       };
+
       addOrder(orderData);
 
-      toast.success("🎉 Order placed successfully! Confirmation email sent.");
+      await sendOrderEmail(order);
+
+      await Swal.fire({
+        icon: "success",
+        title: "Order Placed Successfully! 🎉",
+        text: "Your order has been placed successfully and a confirmation email has been sent.",
+        confirmButtonText: "View My Orders",
+        confirmButtonColor: "#16a34a",
+        timer: 5000,
+        timerProgressBar: true,
+      });
 
       clearCart();
 
-      setTimeout(() => {
-        navigate("/orders");
-      }, 1500);
+      navigate("/orders");
     } catch (error) {
       console.error(error);
 
-      toast.error(
-        "Order placed, but the confirmation email could not be sent.",
-      );
+      await Swal.fire({
+        icon: "error",
+        title: "Email Sending Failed",
+        text: "Your order has been placed successfully, but we couldn't send the confirmation email.",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#dc2626",
+      });
     }
   };
   return (
