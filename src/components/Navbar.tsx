@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { FaShoppingCart } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
 
 function Navbar() {
   const { cart } = useCart();
@@ -25,6 +26,13 @@ function Navbar() {
             placeholder="Search vegetables, fruits, dairy..."
           />
         </div>
+        <Link
+          to="/orders"
+          className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 font-medium shadow-sm transition hover:bg-green-50 hover:text-green-700"
+        >
+          <FaClipboardList />
+          <span>Orders</span>
+        </Link>
         <div className="nav-buttons">
           <Link to="/login">
             <button>Login</button>

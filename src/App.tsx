@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
 
       <ToastContainer

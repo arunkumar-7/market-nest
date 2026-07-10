@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import QRCode from "react-qr-code";
 import {
   FaMoneyBillWave,
@@ -12,9 +12,12 @@ import { useCart } from "../hooks/useCart";
 import { getAddressFromLocation } from "../api/LocationApi";
 import { sendOrderEmail } from "../service/emailService";
 import { toast } from "react-toastify";
+import { useOrder } from "../hooks/useOrder";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const { cart, clearCart } = useCart();
+  const { addOrder } = useOrder();
 
   const [discount] = useState(0);
   const [paymentMode, setPaymentMode] = useState("COD");
@@ -24,6 +27,7 @@ function Checkout() {
   const [email, setEmail] = useState("");
 
   const [address, setAddress] = useState("");
+  const navigate = useNavigate();
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -90,12 +94,39 @@ function Checkout() {
 
       await sendOrderEmail(order);
 
+      const orderData = {
+        orderNumber: Math.floor(Math.random() * 100000),
+
+        customerName,
+
+        mobile,
+
+        email,
+
+        address,
+
+        paymentMode,
+
+        grandTotal: subtotal,
+
+        discount,
+
+        finalAmount,
+
+        orderDate: new Date().toLocaleString(),
+
+        status: "PLACED",
+
+        items: [...cart],
+      };
+      addOrder(orderData);
+
       toast.success("🎉 Order placed successfully! Confirmation email sent.");
 
       clearCart();
 
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/orders");
       }, 1500);
     } catch (error) {
       console.error(error);
