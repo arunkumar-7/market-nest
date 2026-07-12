@@ -13,6 +13,9 @@ import {
   FaChevronUp,
 } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+import { getCurrentUser } from "../service/AuthService";
+
 function Orders() {
   const { orders } = useOrder();
 
@@ -22,10 +25,48 @@ function Orders() {
     setExpandedOrder((prev) => (prev === orderNumber ? null : orderNumber));
   };
 
+  const currentUser = getCurrentUser();
+
+  if (!currentUser) {
+    return (
+      <div className="flex min-h-[70vh] items-center justify-center bg-gray-100 px-6">
+        <div className="rounded-3xl bg-white p-10 text-center shadow-xl">
+          <h1 className="mb-3 text-3xl font-bold text-gray-800">
+            Login to View Your Orders
+          </h1>
+
+          <p className="mb-8 text-gray-500">
+            Sign in to track your previous purchases and order history.
+          </p>
+
+          <Link to="/login">
+            <button className="rounded-xl bg-green-600 px-8 py-3 font-semibold text-white transition hover:bg-green-700">
+              Login
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (orders.length === 0) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <h1 className="text-3xl font-bold text-gray-500">No Orders Found</h1>
+      <div className="flex min-h-[70vh] items-center justify-center bg-gray-100 px-6">
+        <div className="rounded-3xl bg-white p-10 text-center shadow-xl">
+          <h1 className="mb-3 text-3xl font-bold text-gray-800">
+            No Orders Yet
+          </h1>
+
+          <p className="mb-8 text-gray-500">
+            Looks like you haven't placed any orders yet.
+          </p>
+
+          <Link to="/">
+            <button className="rounded-xl bg-green-600 px-8 py-3 font-semibold text-white transition hover:bg-green-700">
+              Continue Shopping
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
