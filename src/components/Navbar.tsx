@@ -6,9 +6,14 @@ import { getCurrentUser, logout } from "../service/AuthService";
 import { useCart } from "../hooks/useCart";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaClipboardList } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { getAddressFromLocation } from "../api/LocationApi";
 
 function Navbar() {
   const { cart } = useCart();
+  const [location, setLocation] = useState(() => {
+    return localStorage.getItem("deliveryLocation") || "Detecting location...";
+  });
   const navigate = useNavigate();
 
   const currentUser = getCurrentUser();
@@ -17,6 +22,47 @@ function Navbar() {
     logout();
     navigate("/");
   };
+
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setLocation("Location unavailable");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const data = await getAddressFromLocation(
+            position.coords.latitude,
+            position.coords.longitude,
+          );
+
+          const area =
+            data.address.suburb ||
+            data.address.neighbourhood ||
+            data.address.village ||
+            data.address.hamlet ||
+            data.address.city_district ||
+            "";
+
+          const city =
+            data.address.city || data.address.town || data.address.county || "";
+
+          const formattedLocation =
+            area && city ? `${area}, ${city}` : data.display_name;
+
+          setLocation(formattedLocation);
+
+          localStorage.setItem("deliveryLocation", formattedLocation);
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      () => {
+        setLocation("Location unavailable");
+      },
+    );
+  }, []);
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   return (
@@ -28,7 +74,7 @@ function Navbar() {
         </div>
         <div className="nav-location">
           <p className="deliver-text">Deliver to</p>
-          <h4>Warasiguda, Hyderabad ▼</h4>
+          <h4>{location} </h4>
         </div>
         <div className="nav-search">
           <input
@@ -72,7 +118,7 @@ function Navbar() {
               </span>
             </button>
           </Link>
-        </div> 
+        </div>
       </nav>
     </>
   );
