@@ -51,7 +51,7 @@ function Hero() {
         pagination={{ clickable: true }}
         speed={1800}
         autoplay={{
-          delay: 3000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         className="overflow-hidden shadow-xl"
