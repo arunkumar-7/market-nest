@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { products } from "../data/products";
 import "./CategoryPage.css";
 import { useCart } from "../hooks/useCart";
+import { toast } from "react-toastify";
 
 function CategoryPage() {
   const { name } = useParams();
@@ -50,7 +51,20 @@ function CategoryPage() {
                 </div>
               ) : (
                 <button
-                  onClick={() => addToCart(product)}
+                  onClick={() => {
+                    addToCart(product);
+
+                    toast.success(`${product.name} added to cart 🛒`, {
+                      toastId: `cart-${product.id}`,
+                      position: "top-right",
+                      autoClose: 1500,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      theme: "colored",
+                    });
+                  }}
                   className="mt-3 w-full rounded-lg bg-green-600 py-2 text-white transition hover:bg-green-700"
                 >
                   Add to Cart
