@@ -107,7 +107,7 @@ export const products: Product[] = [
     name: "Milk",
     price: 35,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/milk.webp",
     stock: 25,
   },
   {
@@ -115,7 +115,7 @@ export const products: Product[] = [
     name: "Curd",
     price: 45,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/curd.webp",
     stock: 20,
   },
   {
@@ -123,7 +123,7 @@ export const products: Product[] = [
     name: "Paneer",
     price: 90,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/paneer.webp",
     stock: 12,
   },
   {
@@ -131,7 +131,7 @@ export const products: Product[] = [
     name: "Cheese",
     price: 110,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/cheese.webp",
     stock: 10,
   },
   {
@@ -139,7 +139,7 @@ export const products: Product[] = [
     name: "Butter",
     price: 70,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/butter.webp",
     stock: 18,
   },
   {
@@ -147,7 +147,7 @@ export const products: Product[] = [
     name: "Ghee",
     price: 250,
     category: "dairy",
-    image: "/images/dairy.png",
+    image: "/images/ghee.webp",
     stock: 8,
   },
 
