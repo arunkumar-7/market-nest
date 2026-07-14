@@ -7,7 +7,7 @@ export const products: Product[] = [
     name: "Tomato",
     price: 40,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/tomato.webp",
     stock: 20,
   },
   {
@@ -15,7 +15,7 @@ export const products: Product[] = [
     name: "Potato",
     price: 30,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/potato.webp",
     stock: 25,
   },
   {
@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: "Onion",
     price: 35,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/onion.webp",
     stock: 18,
   },
   {
@@ -31,7 +31,7 @@ export const products: Product[] = [
     name: "Carrot",
     price: 50,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/carrot.webp",
     stock: 15,
   },
   {
@@ -39,7 +39,7 @@ export const products: Product[] = [
     name: "Beans",
     price: 60,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/beans.webp",
     stock: 12,
   },
   {
@@ -47,7 +47,7 @@ export const products: Product[] = [
     name: "Spinach",
     price: 25,
     category: "vegetables",
-    image: "/images/vegetable.png",
+    image: "/images/spinach.webp",
     stock: 22,
   },
 
