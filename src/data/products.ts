@@ -157,7 +157,7 @@ export const products: Product[] = [
     name: "Bread",
     price: 50,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/bread.webp",
     stock: 20,
   },
   {
@@ -165,7 +165,7 @@ export const products: Product[] = [
     name: "Cake",
     price: 250,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/cake.webp",
     stock: 10,
   },
   {
@@ -173,7 +173,7 @@ export const products: Product[] = [
     name: "Croissant",
     price: 70,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/croissant.webp",
     stock: 15,
   },
   {
@@ -181,7 +181,7 @@ export const products: Product[] = [
     name: "Donut",
     price: 60,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/donut.webp",
     stock: 14,
   },
   {
@@ -189,7 +189,7 @@ export const products: Product[] = [
     name: "Brownie",
     price: 90,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/brownie.webp",
     stock: 12,
   },
   {
@@ -197,7 +197,7 @@ export const products: Product[] = [
     name: "Muffin",
     price: 80,
     category: "bakery",
-    image: "/images/bakery.png",
+    image: "/images/muffin.webp",
     stock: 18,
   },
 
