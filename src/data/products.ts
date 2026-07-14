@@ -57,7 +57,7 @@ export const products: Product[] = [
     name: "Apple",
     price: 120,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/apple.webp",
     stock: 20,
   },
   {
@@ -65,7 +65,7 @@ export const products: Product[] = [
     name: "Banana",
     price: 60,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/banana.webp",
     stock: 30,
   },
   {
@@ -73,7 +73,7 @@ export const products: Product[] = [
     name: "Orange",
     price: 80,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/orange.webp",
     stock: 16,
   },
   {
@@ -81,7 +81,7 @@ export const products: Product[] = [
     name: "Mango",
     price: 150,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/mango.webp",
     stock: 14,
   },
   {
@@ -89,7 +89,7 @@ export const products: Product[] = [
     name: "Grapes",
     price: 90,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/grapes.webp",
     stock: 11,
   },
   {
@@ -97,7 +97,7 @@ export const products: Product[] = [
     name: "Pomegranate",
     price: 140,
     category: "fruits",
-    image: "/images/fruit.png",
+    image: "/images/pomogranate.webp",
     stock: 10,
   },
 
