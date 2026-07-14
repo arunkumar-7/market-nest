@@ -207,7 +207,7 @@ export const products: Product[] = [
     name: "Cookies",
     price: 80,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/cookies.webp",
     stock: 20,
   },
   {
@@ -215,7 +215,7 @@ export const products: Product[] = [
     name: "Chips",
     price: 30,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/chips.webp",
     stock: 30,
   },
   {
@@ -223,7 +223,7 @@ export const products: Product[] = [
     name: "Popcorn",
     price: 50,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/popcorn.webp",
     stock: 18,
   },
   {
@@ -231,7 +231,7 @@ export const products: Product[] = [
     name: "Chocolate",
     price: 120,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/chocolate.webp",
     stock: 14,
   },
   {
@@ -239,7 +239,7 @@ export const products: Product[] = [
     name: "Biscuits",
     price: 35,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/biscuit.webp",
     stock: 25,
   },
   {
@@ -247,7 +247,7 @@ export const products: Product[] = [
     name: "Nachos",
     price: 90,
     category: "snacks",
-    image: "/images/snacks.png",
+    image: "/images/nachos.webp",
     stock: 10,
   },
 ];
