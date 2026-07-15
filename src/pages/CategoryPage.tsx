@@ -23,13 +23,22 @@ function CategoryPage() {
 
           return (
             <div className="product-card" key={product.id}>
-              <img src={product.image} alt={product.name} />
+              <div className="flex justify-center pt-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-40 w-40 object-contain transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 text-center">
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {product.name}
+                </h3>
 
-              <h3>{product.name}</h3>
-
-              <p>₹{product.price}</p>
-
-              <p>Stock: {product.stock}</p>
+                <p className="mt-1 text-xl font-bold text-green-600">
+                  ₹{product.price}
+                </p>
+              </div>
 
               {cartItem ? (
                 <div className="mt-3 flex items-center justify-between rounded-lg bg-green-600 px-3 py-2 text-white">
