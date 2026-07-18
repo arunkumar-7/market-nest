@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { useCart } from "../hooks/useCart";
 import { coupons } from "../data/Coupons";
+import { toast } from "react-toastify";
 
 function Cart() {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
@@ -11,6 +12,7 @@ function Cart() {
 
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [appliedCoupon, setAppliedCoupon] = useState("");
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -18,15 +20,23 @@ function Cart() {
   );
 
   const applyCoupon = () => {
+    if (appliedCoupon === coupon.trim().toUpperCase()) {
+      toast.info("Coupon already applied!");
+      return;
+    }
     const foundCoupon = coupons.find(
       (c) => c.code.toLowerCase() === coupon.trim().toLowerCase(),
     );
 
     if (foundCoupon) {
       setDiscount((subtotal * foundCoupon.discount) / 100);
+      setAppliedCoupon(foundCoupon.code);
+      toast.success(
+        `${foundCoupon.code} applied! You saved ${foundCoupon.discount}% 🎉`,
+      );
     } else {
       setDiscount(0);
-      alert("Invalid coupon code");
+      toast.error("Invalid coupon code");
     }
   };
 
