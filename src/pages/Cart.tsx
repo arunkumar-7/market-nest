@@ -3,19 +3,32 @@ import { FaMinus, FaPlus, FaTrash, FaTag } from "react-icons/fa";
 import { useState } from "react";
 
 import { useCart } from "../hooks/useCart";
+import { coupons } from "../data/Coupons";
 
 function Cart() {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
     useCart();
 
   const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
 
-  const discount = coupon.toLowerCase() === "save10" ? subtotal * 0.1 : 0;
+  const applyCoupon = () => {
+    const foundCoupon = coupons.find(
+      (c) => c.code.toLowerCase() === coupon.trim().toLowerCase(),
+    );
+
+    if (foundCoupon) {
+      setDiscount((subtotal * foundCoupon.discount) / 100);
+    } else {
+      setDiscount(0);
+      alert("Invalid coupon code");
+    }
+  };
 
   const total = subtotal - discount;
 
@@ -128,7 +141,10 @@ function Cart() {
                     className="flex-1 rounded-xl border p-3 outline-none focus:border-green-600"
                   />
 
-                  <button className="rounded-xl bg-green-700 px-5 font-semibold text-white hover:bg-green-800">
+                  <button
+                    onClick={applyCoupon}
+                    className="rounded-xl bg-green-700 px-5 font-semibold text-white hover:bg-green-800"
+                  >
                     Apply
                   </button>
                 </div>
